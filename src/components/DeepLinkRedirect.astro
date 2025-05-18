@@ -1,0 +1,16 @@
+<script>
+  const location = window.location;
+
+  if (location.pathname.startsWith("/deep-link")) {
+    const path = location.pathname.substring("/deep-link".length);
+    const hash = location.hash;
+    const query = location.search;
+
+    const deepLink = `tilepad://deep-link${path}${query}${hash}`;
+    window.location.href = deepLink;
+    const el = document.getElementById("tagline");
+    if (el) {
+      el.textContent = "Opening in TilePad..";
+    }
+  }
+</script>

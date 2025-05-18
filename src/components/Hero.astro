@@ -7,7 +7,10 @@ const { title = data.title, tagline, image, actions = [] } = data.hero || {};
 
 import logoSrc from "../assets/tilepad-logo.svg";
 import previewSrc from "../assets/image-1.png";
+import DeepLinkRedirect from "./DeepLinkRedirect.astro";
 ---
+
+<DeepLinkRedirect />
 
 <div class="hero">
   <Image src={previewSrc} width={600} height={400} alt="Preview" />
@@ -16,7 +19,7 @@ import previewSrc from "../assets/image-1.png";
     <div class="sl-flex copy">
       <Image src={logoSrc} height={100} alt="Tilepad Logo" />
 
-      {tagline && <div class="tagline" set:html={tagline} />}
+      {tagline && <div id="tagline" class="tagline" set:html={tagline} />}
     </div>
 
     {
