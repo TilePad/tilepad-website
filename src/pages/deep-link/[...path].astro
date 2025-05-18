@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <p>You should be prompted to open <b>TilePad</b></p>
+
+    <script>
+      const location = window.location;
+
+      const path = location.pathname.substring("/deep-link".length);
+      const hash = location.hash;
+      const query = location.search;
+
+      const deepLink = `tilepad://deep-link${path}${query}${hash}`;
+      window.location.href = deepLink;
+    </script>
+  </body>
+</html>
