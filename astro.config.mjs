@@ -8,7 +8,7 @@ export default defineConfig({
 		starlight({
 			title: 'TilePad',
 			social: {
-				github: 'https://github.com/tilepad/tilepad-desktops',
+				github: 'https://github.com/tilepad/tilepad-desktop',
 			},
 			sidebar: [
 				{
