@@ -7,9 +7,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'TilePad',
-			social: {
-				github: 'https://github.com/tilepad/tilepad-desktop',
-			},
+			social: [
+				{ icon: 'github', label: "Github", href: 'https://github.com/tilepad' }
+			],
 			sidebar: [
 				{
 					label: 'Guides',
