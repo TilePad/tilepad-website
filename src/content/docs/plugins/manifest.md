@@ -215,17 +215,3 @@ Customize how the tile icon appears in the grid.
 ```
 
 ---
-
-## Summary of Validation Rules
-
-| Field            | Constraint            |
-| ---------------- | --------------------- |
-| `plugin.id`      | Reverse domain format |
-| `plugin.name`    | Non-empty             |
-| `plugin.version` | Non-empty             |
-| `category.label` | Non-empty             |
-| `action_id`      | Matches `[a-zA-Z_-]+` |
-| `action.label`   | Non-empty             |
-
----
-

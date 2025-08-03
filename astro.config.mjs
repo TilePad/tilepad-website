@@ -17,12 +17,22 @@ export default defineConfig({
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Getting Started', slug: 'guides/getting-started' },
 					],
-				}, {
+				},
+				{
 					label: 'Plugins',
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Getting Started', slug: 'plugins/getting-started' },
-						{ label: 'Plugin Manifest Format', slug: 'plugins/manifest' },
+						{ label: 'Manifest Format', slug: 'plugins/manifest' },
+					],
+				},
+				{
+					label: 'Icon Packs',
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{ label: 'Getting Started', slug: 'plugins/getting-started' },
+						{ label: 'Manifest Format', slug: 'icon-packs/manifest' },
+						{ label: 'Icons Format', slug: 'icon-packs/icons' },
 					],
 				},
 				{
