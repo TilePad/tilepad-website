@@ -1,0 +1,231 @@
+---
+title: Plugin Manifest Format
+description: Plugin manifest file format
+---
+
+The plugin manifest JSON file defines the details of your plugin and how TilePad can interact with your plugin and what actions it provides. 
+
+Your plugin manifest should be placed at: 
+
+`.tilepadPlugin/manifest.json`
+
+---
+
+## Structure Overview
+
+A typical `PluginManifest` file looks like this:
+
+```json
+{
+  "plugin": { ... },
+  "bin": { ... },
+  "category": { ... },
+  "actions": { ... }
+}
+```
+
+Each section is described in detail below.
+
+---
+
+## Plugin Information (`plugin`)
+
+Defines basic metadata about the plugin.
+
+### Example
+
+```json
+{
+  "id": "com.example.myplugin",
+  "name": "My Plugin",
+  "version": "1.0.0",
+  "authors": ["Your Name"],
+  "description": "What this plugin does",
+  "icon": "https://example.com/icon.png"
+}
+```
+
+### Fields
+
+| Field       | Type         | Required | Description                                                                        |
+| ----------- | ------------ | -------- | ---------------------------------------------------------------------------------- |
+| id          | string       | Yes      | Unique plugin ID in reverse domain format (e.g. `com.example.plugin`)              |
+| name        | string       | Yes      | Human-readable name                                                                |
+| version     | string       | Yes      | Plugin version                                                                     |
+| authors     | string[]     | No       | List of author names                                                               |
+| description | string       | No       | Brief explanation of the plugin                                                    |
+| icon        | string (URL) | No       | Path to the icon to use relative to .tilepadPlugin (Must be within this directory) |
+
+---
+
+## Runtime Definition (`bin`)
+
+Describes how your plugin is executed, either via Node.js or as a native binary.
+
+### Option 1: Node.js Runtime
+
+```json
+{
+  "node": {
+    "entrypoint": "dist/index.js",
+    "version": ">=20.0.0"
+  }
+}
+```
+
+| Field        | Type     | Required | Description                      |
+| ------------ | -------- | -------- | -------------------------------- |
+| `entrypoint` | `string` | Yes      | Path to JS entrypoint            |
+| `version`    | `string` | Yes      | Node.js version range (`semver`) |
+
+:::note
+If a semver compatible node runtime version is not available a matching one will be downloaded 
+and installed for the plugin. 
+:::
+
+---
+
+### Option 2: Native Binaries
+
+```json
+{
+  "native": [
+    {
+      "os": "windows",
+      "arch": "x64",
+      "path": "bin/windows/plugin.exe"
+    },
+    {
+      "os": "linux",
+      "arch": "x64",
+      "path": "bin/linux/plugin"
+    }
+  ]
+}
+```
+
+| Field  | Type     | Required | Description                                                                   |
+| ------ | -------- | -------- | ----------------------------------------------------------------------------- |
+| `os`   | `string` | Yes      | Target OS: `windows`, `macos`, `linux`                                        |
+| `arch` | `string` | Yes      | CPU architecture: `x86`, `x64`, `arm`, `arm64`                                |
+| `path` | `string` | Yes      | Path to executable relative to .tilepadPlugin (Must be within this directory) |
+
+---
+
+## Category (`category`)
+
+Groups the plugin's actions under a labeled category in the UI.
+
+### Example
+
+```json
+{
+  "label": "Media",
+  "icon": "media-icon"
+}
+```
+
+| Field   | Type     | Required | Description                                                                        |
+| ------- | -------- | -------- | ---------------------------------------------------------------------------------- |
+| `label` | `string` | Yes      | Display name in the UI                                                             |
+| `icon`  | `string` | No       | Path to the icon to use relative to .tilepadPlugin (Must be within this directory) |
+
+---
+
+## Actions (`actions`)
+
+Defines one or more user-invokable actions.
+
+### Structure
+
+```json
+{
+  "{action_id}": {
+    "label": "Action Label",
+    "icon": "icon-name",
+    "display": "ui/display.html",
+    "inspector": "ui/inspector.html",
+    "description": "Short tooltip text",
+    "icon_options": {
+      "padding": 10,
+      "background_color": "#202020",
+      "border_color": "#cccccc"
+    }
+  }
+}
+```
+
+> **`action_id`** must match the pattern `[a-zA-Z_-]+` (e.g. `my_action`, `myAction`, `my-action`)
+
+### Action Fields
+
+| Field          | Type     | Required | Description                                                                                           |
+| -------------- | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| `label`        | `string` | Yes      | Label shown in the UI                                                                                 |
+| `icon`         | `string` | No       | Path to the icon to use relative to .tilepadPlugin (Must be within this directory)                    |
+| `display`      | `string` | No       | Path to the display HTML file to use relative to .tilepadPlugin (Must be within this directory)       |
+| `inspector`    | `string` | No       | Path to the inspector HTML file to use relative to .tilepadPlugin (Must be within this directory)HTML |
+| `description`  | `string` | No       | Description tooltip for the action                                                                    |
+| `icon_options` | `object` | No       | Default options for how the icon and tile is displayed                                                |
+
+---
+
+## Icon Options (`icon_options`)
+
+Customize how the tile icon appears in the grid.
+
+### Example
+
+```json
+{
+  "padding": 8,
+  "background_color": "#000000",
+  "border_color": "#ffffff"
+}
+```
+
+| Field              | Type     | Description           |
+| ------------------ | -------- | --------------------- |
+| `padding`          | `number` | Padding in pixels     |
+| `background_color` | `string` | Tile background color |
+| `border_color`     | `string` | Border color          |
+
+---
+
+## Complete Minimal Example
+
+```json
+{
+  "plugin": {
+    "id": "com.example.hello",
+    "name": "Hello Plugin",
+    "version": "1.0.0",
+    "authors": ["Dev Name"]
+  },
+  "category": {
+    "label": "Utilities"
+  },
+  "actions": {
+    "say_hello": {
+      "label": "Say Hello",
+      "icon": "images/logo.svg"
+    }
+  }
+}
+```
+
+---
+
+## Summary of Validation Rules
+
+| Field            | Constraint            |
+| ---------------- | --------------------- |
+| `plugin.id`      | Reverse domain format |
+| `plugin.name`    | Non-empty             |
+| `plugin.version` | Non-empty             |
+| `category.label` | Non-empty             |
+| `action_id`      | Matches `[a-zA-Z_-]+` |
+| `action.label`   | Non-empty             |
+
+---
+

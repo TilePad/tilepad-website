@@ -17,6 +17,13 @@ export default defineConfig({
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Getting Started', slug: 'guides/getting-started' },
 					],
+				}, {
+					label: 'Plugins',
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{ label: 'Getting Started', slug: 'plugins/getting-started' },
+						{ label: 'Plugin Manifest Format', slug: 'plugins/manifest' },
+					],
 				},
 				{
 					label: 'Reference',
