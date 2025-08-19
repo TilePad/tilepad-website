@@ -3,9 +3,9 @@ title: Plugin Manifest Format
 description: Plugin manifest file format
 ---
 
-The plugin manifest JSON file defines the details of your plugin and how TilePad can interact with your plugin and what actions it provides. 
+The plugin manifest JSON file defines the details of your plugin and how TilePad can interact with your plugin and what actions it provides.
 
-Your plugin manifest should be placed at: 
+Your plugin manifest should be placed at:
 
 `.tilepadPlugin/manifest.json`
 
@@ -36,12 +36,12 @@ Defines basic metadata about the plugin.
 
 ```json
 {
-  "id": "com.example.myplugin",
-  "name": "My Plugin",
-  "version": "1.0.0",
-  "authors": ["Your Name"],
-  "description": "What this plugin does",
-  "icon": "https://example.com/icon.png"
+    "id": "com.example.myplugin",
+    "name": "My Plugin",
+    "version": "1.0.0",
+    "authors": ["Your Name"],
+    "description": "What this plugin does",
+    "icon": "https://example.com/icon.png"
 }
 ```
 
@@ -66,21 +66,23 @@ Describes how your plugin is executed, either via Node.js or as a native binary.
 
 ```json
 {
-  "node": {
-    "entrypoint": "dist/index.js",
-    "version": ">=20.0.0"
-  }
+    "node": {
+        "entrypoint": "dist/index.js",
+        "version": "=22.18.0"
+    }
 }
 ```
 
 | Field        | Type     | Required | Description                      |
 | ------------ | -------- | -------- | -------------------------------- |
 | `entrypoint` | `string` | Yes      | Path to JS entrypoint            |
-| `version`    | `string` | Yes      | Node.js version range (`semver`) |
+| `version`    | `string` | No       | Node.js version range (`semver`) |
 
 :::note
-If a semver compatible node runtime version is not available a matching one will be downloaded 
-and installed for the plugin. 
+If a semver compatible node runtime version is not available a matching one will be downloaded
+and installed for the plugin.
+
+If `version` is not specified the `=22.18.0` version will be used as a fallback
 :::
 
 ---
@@ -89,18 +91,18 @@ and installed for the plugin.
 
 ```json
 {
-  "native": [
-    {
-      "os": "windows",
-      "arch": "x64",
-      "path": "bin/windows/plugin.exe"
-    },
-    {
-      "os": "linux",
-      "arch": "x64",
-      "path": "bin/linux/plugin"
-    }
-  ]
+    "native": [
+        {
+            "os": "windows",
+            "arch": "x64",
+            "path": "bin/windows/plugin.exe"
+        },
+        {
+            "os": "linux",
+            "arch": "x64",
+            "path": "bin/linux/plugin"
+        }
+    ]
 }
 ```
 
@@ -120,8 +122,8 @@ Groups the plugin's actions under a labeled category in the UI.
 
 ```json
 {
-  "label": "Media",
-  "icon": "media-icon"
+    "label": "Media",
+    "icon": "media-icon"
 }
 ```
 
@@ -140,18 +142,18 @@ Defines one or more user-invokable actions.
 
 ```json
 {
-  "{action_id}": {
-    "label": "Action Label",
-    "icon": "icon-name",
-    "display": "ui/display.html",
-    "inspector": "ui/inspector.html",
-    "description": "Short tooltip text",
-    "icon_options": {
-      "padding": 10,
-      "background_color": "#202020",
-      "border_color": "#cccccc"
+    "{action_id}": {
+        "label": "Action Label",
+        "icon": "icon-name",
+        "display": "ui/display.html",
+        "inspector": "ui/inspector.html",
+        "description": "Short tooltip text",
+        "icon_options": {
+            "padding": 10,
+            "background_color": "#202020",
+            "border_color": "#cccccc"
+        }
     }
-  }
 }
 ```
 
@@ -178,9 +180,9 @@ Customize how the tile icon appears in the grid.
 
 ```json
 {
-  "padding": 8,
-  "background_color": "#000000",
-  "border_color": "#ffffff"
+    "padding": 8,
+    "background_color": "#000000",
+    "border_color": "#ffffff"
 }
 ```
 
@@ -196,21 +198,21 @@ Customize how the tile icon appears in the grid.
 
 ```json
 {
-  "plugin": {
-    "id": "com.example.hello",
-    "name": "Hello Plugin",
-    "version": "1.0.0",
-    "authors": ["Dev Name"]
-  },
-  "category": {
-    "label": "Utilities"
-  },
-  "actions": {
-    "say_hello": {
-      "label": "Say Hello",
-      "icon": "images/logo.svg"
+    "plugin": {
+        "id": "com.example.hello",
+        "name": "Hello Plugin",
+        "version": "1.0.0",
+        "authors": ["Dev Name"]
+    },
+    "category": {
+        "label": "Utilities"
+    },
+    "actions": {
+        "say_hello": {
+            "label": "Say Hello",
+            "icon": "images/logo.svg"
+        }
     }
-  }
 }
 ```
 
