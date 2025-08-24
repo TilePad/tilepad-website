@@ -92,6 +92,10 @@ Describes how your plugin is executed, either via Node.js or as a native binary.
 | `version`    | `string` | No       | Node.js version range (`semver`) |
 
 :::note
+It's recommended that you omit the `version` field and allow the default version to be used
+unless you require a specific node version constraint. To avoid downloading many different
+node versions on the end-user device
+
 If a semver compatible node runtime version is not available a matching one will be downloaded
 and installed for the plugin.
 
