@@ -16,7 +16,7 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Introduction', slug: 'getting-started/introduction' },
-						{ label: 'Install', slug: 'getting-started/install' },
+						{ label: 'Install', link: 'getting-started/install' },
 					],
 				},
 				{

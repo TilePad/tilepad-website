@@ -1,0 +1,189 @@
+---
+import { Card } from "@astrojs/starlight/components";
+import { Badge } from "@astrojs/starlight/components";
+import {} from "@astrojs/starlight/";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const desktopDownloadURL =
+  "https://github.com/TilePad/tilepad-desktop/releases/latest/download/latest.json";
+
+const desktopResponse = await fetch(desktopDownloadURL);
+const desktopData = await desktopResponse.json();
+
+const desktopVersion = desktopData.version;
+const desktopURL = `https://github.com/TilePad/tilepad-desktop/releases/download/app-v${desktopVersion}`;
+
+const mobileDownloadURL =
+  "https://github.com/TilePad/tilepad-mobile/releases/latest/download/latest.json";
+
+const mobileResponse = await fetch(mobileDownloadURL);
+const mobileData = await mobileResponse.json();
+
+const mobileVersion = mobileData.version;
+const mobileURL = `https://github.com/TilePad/tilepad-mobile/releases/download/v${mobileVersion}`;
+
+const androidDownloads = [
+  {
+    name: "APK",
+    arch: "*",
+    ext: ".apk",
+    url: `${mobileURL}/tilepad-${mobileVersion}.apk`,
+  },
+  {
+    name: "AAB",
+    arch: "*",
+    ext: ".aab",
+    url: `${mobileURL}/tilepad-${mobileVersion}.aab`,
+  },
+];
+
+const windowsDownloads = [
+  {
+    name: "Installer",
+    arch: "x86_64",
+    ext: ".msi",
+    url: `${desktopURL}/Tilepad_${desktopVersion}_x64_en-US.msi`,
+  },
+  {
+    name: "Installer",
+    arch: "x86_64",
+    ext: ".exe",
+    url: `${desktopURL}/Tilepad_${desktopVersion}_x64-setup.exe`,
+  },
+];
+
+const linuxDownloads = [
+  {
+    name: "RPM",
+    arch: "x86_64",
+    ext: ".rpm",
+    url: `${desktopURL}/Tilepad-${desktopVersion}-1.x86_64.rpm
+`,
+  },
+  {
+    name: "AppImage",
+    arch: "x86_64",
+    ext: ".AppImage",
+    url: `${desktopURL}/Tilepad_${desktopVersion}_amd64.AppImage`,
+  },
+  {
+    name: "Deb",
+    arch: "x86_64",
+    ext: ".deb",
+    url: `${desktopURL}/Tilepad_${desktopVersion}_amd64.deb`,
+  },
+];
+
+const macosDownloads = [
+  {
+    name: "DMG",
+    arch: "aarch64 (Apple Silicon)",
+    ext: ".dmg",
+    url: `${desktopURL}/Tilepad_${desktopVersion}_aarch64.dmg`,
+  },
+  {
+    name: "DMG",
+    arch: "x86_64",
+    ext: ".dmg",
+    url: `${desktopURL}/Tilepad_${desktopVersion}_x64.dmg`,
+  },
+];
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Download & Install",
+    next: false,
+    prev: false,
+  }}
+>
+  <Card title="Windows" icon="laptop">
+    <table>
+      <tbody>
+        {
+          windowsDownloads.map((download) => (
+            <tr>
+              <td>{download.name}</td>
+              <td>
+                <Badge text={download.arch} variant="success" />
+                <Badge text={download.ext} variant="tip" />
+              </td>
+              <td>
+                <a href={download.url}>Download</a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Card>
+
+  <br/>
+
+  <Card title="Android" icon="laptop">
+    <table>
+      <tbody>
+        {
+          androidDownloads.map((download) => (
+            <tr>
+              <td>{download.name}</td>
+              <td>
+                <Badge text={download.arch} variant="success" />
+                <Badge text={download.ext} variant="tip" />
+              </td>
+              <td>
+                <a href={download.url}>Download</a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Card>
+
+  <br/>
+
+  <Card title="Linux" icon="laptop">
+    <table>
+      <tbody>
+        {
+          linuxDownloads.map((download) => (
+            <tr>
+              <td>{download.name}</td>
+              <td>
+                <Badge text={download.arch} variant="success" />
+                <Badge text={download.ext} variant="tip" />
+              </td>
+              <td>
+                <a href={download.url}>Download</a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Card>
+
+    <br/>
+
+  <Card title="MacOS" icon="laptop">
+    <table>
+      <tbody>
+        {
+          macosDownloads.map((download) => (
+            <tr>
+              <td>{download.name}</td>
+              <td>
+                <Badge text={download.arch} variant="success" />
+                <Badge text={download.ext} variant="tip" />
+              </td>
+              <td>
+                <a href={download.url}>Download</a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Card>
+</StarlightPage>

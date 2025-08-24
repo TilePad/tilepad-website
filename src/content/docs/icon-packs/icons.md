@@ -28,8 +28,8 @@ Each icon has a `name` and `path`
 
 ```json
 {
-    "name": "example",
-    "path": "icons/example.svg"
+  "name": "example",
+  "path": "icons/example.svg"
 }
 ```
 
@@ -46,14 +46,14 @@ Each icon has a `name` and `path`
 
 ```json
 [
-    {
-        "name": "example",
-        "path": "icons/example.svg"
-    },
-    {
-        "name": "example-b",
-        "path": "icons/example-b.svg"
-    }
+  {
+    "name": "example",
+    "path": "icons/example.svg"
+  },
+  {
+    "name": "example-b",
+    "path": "icons/example-b.svg"
+  }
 ]
 ```
 
