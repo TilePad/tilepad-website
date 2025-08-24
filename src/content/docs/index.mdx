@@ -1,17 +1,73 @@
 ---
 title: TilePad
-description: Get started building your docs site with Starlight.
+description: Transform any Android device into a powerful macropad with TilePad - the open-source Stream Deck alternative
 template: splash
 hero:
-  tagline: TilePad is a Rust-powered desktop macropad that uses your Android device as the touchscreen interface.
-  image:
-    file: ../../assets/tilepad-logo.svg
-  actions:
-    - text: Getting Started
-      link: /guides/getting-started/
-      icon: right-arrow
-    - text: GitHub
-      link: https://github.com/tilepad/tilepad-desktop
-      icon: external
-      variant: minimal
+    tagline: Transform any Android device into a powerful macropad
+    image:
+        file: ../../assets/tilepad-logo.svg
+        alt: TilePad interface showing customizable tiles on an Android tablet
+    actions:
+        - text: Download
+          link: /getting-started/install
+          icon: external
+          variant: primary
+        - text: Documentation
+          link: /getting-started/introduction
+          icon: right-arrow
+        - text: View on GitHub
+          link: https://github.com/tilePad/tilepad-desktop
+          icon: github
+          variant: minimal
 ---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Icon } from "@astrojs/starlight/components";
+
+<br />
+
+<CardGrid >
+    <Card title="Repurpose Existing Devices" icon="laptop">
+        Turn that old Android tablet or phone into a macropad. No
+        need to buy expensive dedicated hardware like Stream Deck devices.
+    </Card>
+
+    <Card title="Unlimited Customization" icon="puzzle">
+        Design your perfect workflow with fully customizable tiles, icons,
+        actions, and layouts. Make it truly yours. Powerful plugin API allows
+        you to create plugins for custom functionality in your language of choice
+    </Card>
+
+    <Card title="Modern Technology" icon="rocket">
+        Built on the back of modern and reliable technology, under the hood TilePad is
+        powered by Rust, SvelteKit, and Typescript
+    </Card>
+
+    <Card title="Open Source" icon="github">
+        Completely free and open-source. Contribute, customize, and extend
+        TilePad to fit your exact needs.
+    </Card>
+
+</CardGrid>
+
+<br />
+
+---
+
+<br />
+
+<CardGrid >
+
+  <Card title="Content Creators" icon="twitch">
+
+    Control OBS, switch scenes, adjust audio levels, launch applications, and manage your entire streaming setup with custom tiles.
+
+  </Card>
+
+  <Card title="Developers" icon="vscode">
+
+    Quick access to development tools, IDEs, terminal commands, project folders, and deployment scripts. Speed up your workflow.
+
+  </Card>
+
+</CardGrid>

@@ -1,5 +1,4 @@
 ---
-slug: icon-packs/icons
 title: Icons Format
 description: Icon pack icons file format
 ---

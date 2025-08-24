@@ -1,5 +1,4 @@
 ---
-slug: plugins/getting-started
 title: Getting Started
 description: Getting Started with TilePad Plugin Development
 ---
