@@ -1,4 +1,5 @@
 ---
+slug: icon-packs/icons
 title: Icons Format
 description: Icon pack icons file format
 ---
@@ -17,18 +18,19 @@ A typical `Icons` file looks like this:
   ...
 ]
 ```
+
 ---
 
-## Icon 
+## Icon
 
-Each icon has a `name` and `path`  
+Each icon has a `name` and `path`
 
 ### Example
 
 ```json
 {
-  "name": "example",
-  "path": "icons/example.svg"
+    "name": "example",
+    "path": "icons/example.svg"
 }
 ```
 
@@ -45,16 +47,15 @@ Each icon has a `name` and `path`
 
 ```json
 [
-  {
-    "name": "example",
-    "path": "icons/example.svg"
-  },
-  {
-    "name": "example-b",
-    "path": "icons/example-b.svg"
-  }
+    {
+        "name": "example",
+        "path": "icons/example.svg"
+    },
+    {
+        "name": "example-b",
+        "path": "icons/example-b.svg"
+    }
 ]
 ```
 
 ---
-

@@ -1,4 +1,5 @@
 ---
+slug: plugins/getting-started
 title: Getting Started
 description: Getting Started with TilePad Plugin Development
 ---
@@ -17,18 +18,17 @@ cargo install tilepad-cli
 
 Scaffold out a new plugin with:
 
-
 ```sh
 tilepad create
 ```
 
 TilePad provides templates and libraries for `Javascript`, `TypeScript`, and `Rust` however any language that can compile
-to a native binary or that can be run by NodeJS can be used with TilePad, provided that you manually implement 
+to a native binary or that can be run by NodeJS can be used with TilePad, provided that you manually implement
 the TilePad websocket protocol.
 
 ## Link Your Plugin to TilePad
 
-To speed up local development and prevent yourself from having to continuously rebuild and install your plugin. You can use the 
+To speed up local development and prevent yourself from having to continuously rebuild and install your plugin. You can use the
 following command from within your plugin folder to link your development plugin folder with TilePad.
 
 ```sh

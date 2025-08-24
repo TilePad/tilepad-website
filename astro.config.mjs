@@ -30,6 +30,7 @@ export default defineConfig({
 					label: 'Icon Packs',
 					items: [
 						// Each item here is one entry in the navigation menu.
+						{ label: 'Getting Started', slug: 'icon-packs/getting-started' },
 						{ label: 'Manifest Format', slug: 'icon-packs/manifest' },
 						{ label: 'Icons Format', slug: 'icon-packs/icons' },
 					],
