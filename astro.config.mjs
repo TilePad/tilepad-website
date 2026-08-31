@@ -36,10 +36,6 @@ export default defineConfig({
             { label: "Icons Format", slug: "icon-packs/icons" },
           ],
         },
-        {
-          label: "Reference",
-          items: [{ autogenerate: { directory: "reference" } }],
-        },
       ],
       components: {
         Hero: "./src/components/Hero.astro",
