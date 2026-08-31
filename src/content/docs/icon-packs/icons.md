@@ -14,7 +14,10 @@ A typical `Icons` file looks like this:
 
 ```json
 [
-  ...
+  {
+    "name": "example",
+    "path": "icons/example.svg"
+  }
 ]
 ```
 
